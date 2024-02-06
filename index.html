@@ -6,32 +6,132 @@
   <script id="challenge">
     // 👉 CHALLENGE 1
     function profileActivation(profile, reason) {
-
-    }
+      let result
+    for( property in profile)
+    if (profile[property] === true){
+      if(reason === undefined){
+        result = "confirm status manually"
+        return result
+      } else {
+      profile[property] = false
+      profile['reason'] = reason
+      return profile
+      } 
+      } else {
+        profile[property] = true
+        delete profile.reason
+        return profile
+      }
+    } 
+    
 
     // 👉 CHALLENGE 2
     function mineSweeper(grid, x, y) {
+      let result
+      x--
+      y--
+      if(x > 2 || x < 0 || y > 2 || y < 0 ){
+         result = "invalid coordinates"
+         } else if ( grid[y][x] === "🟥"){
+          result = "🟥 💀"
+          } else if ( grid[y][x] === "🟦"){
+          result = "🟦 🥳"
+          } 
+      
 
+
+
+
+
+
+      // for(let i in grid){
+      //   for(let index in grid[i]){
+      //     // let i = y
+      //     // let index = x
+      //     if(x > 3 || x < 1 || y > 3 || y < 1 ){
+      //    result = "invalid coordinates"
+      //    } 
+
+      //     // console.log(x)
+      //     // console.log(y)
+      //     console.log(grid[1])
+          
+      //    if (grid[i][index] === "🟥" ){
+      //     retult = "🟥 💀"
+      //   } else if (grid[i][index] === "🟦" ){
+      //     retult = "🟦 🥳"
+      //   }
+      //   } 
+      // }
+
+
+
+
+
+
+       
+    //   for(x=1; x<= grid.length; x++){
+    //     for(index=0; index< grid[x].length; index++){
+    //   if(x > 3 || x < 1 || y > 3 || y < 1 ){
+    //     result = "invalid coordinates"}
+        
+    //     console.log(grid[x][index])
+    //   } 
+    // }
+    
+      return result
+      
     }
 
     // 👉 CHALLENGE 3
     function booleanize(obj) {
-
+      
+      for(let property in obj){
+      if( property.length > 9){
+        obj = "shorten all prop names to 9 chars or less"
+      } else if (obj[property] ===0){
+        obj[property] = false
+      } else if (obj[property] ===1){
+        obj[property] = true
+      } else if (obj[property] ===null){
+        delete obj[property]
+      }
+      } return obj
+      
     }
 
     // 👉 CHALLENGE 4
     function scrub(text, forbidden) {
-
+      let Sstring
+      
+      Sstring = text.split(" ")
+      for(let i in Sstring)
+      for(let index in forbidden)
+      if (Sstring[i] === forbidden[index]){
+        let xsentence = ''
+        for( x =0; x<Sstring[i].length; x++){
+          xsentence+= 'x'
+        } Sstring[i] = xsentence
+        
+      }
+      Sstring = Sstring.join(' ')
+      return Sstring
+      
     }
 
     // 👉 CHALLENGE 5 (bonus, NOT graded)
     function normalizePhoneNumber(num) {
-
+      let phonenumberarr 
+      let phonenumber
+      phonenumberarr = num.split('')
+      // console.log(`(${phonenumberarr[0]}${phonenumberarr[1]}${phonenumberarr[2]}) ${phonenumberarr[3]}${phonenumberarr[4]}${phonenumberarr[5]}-${phonenumberarr[6]}${phonenumberarr[7]}${phonenumberarr[8]}${phonenumberarr[9]}`)
+      phonenumber = `(${phonenumberarr[0]}${phonenumberarr[1]}${phonenumberarr[2]}) ${phonenumberarr[3]}${phonenumberarr[4]}${phonenumberarr[5]}-${phonenumberarr[6]}${phonenumberarr[7]}${phonenumberarr[8]}${phonenumberarr[9]}`
+      return phonenumber
     }
-
+      // I KNOW THIS CODE IS TERRIBLE LOL it was the first thing that came to mind. im sure there is a faster way.
     // 👉 CHALLENGE 6 (bonus, NOT graded)
     function diceRolls() {
-
+      
     }
 
     // 🧪 DO NOT make any changes below this line ===================
